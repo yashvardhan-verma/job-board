@@ -15,9 +15,9 @@ export class Job extends Component {
     fetch(url, {
       method: 'GET',
       redirect: 'follow'
-    }).then(response => response.text())
+    }).then(response => response.json())
     .then(result => {
-      console.log(result)
+      console.log(result.articles)
       this.setState({ articles: result.articles });
       })
     .catch(error => console.log('error', error))
@@ -30,7 +30,7 @@ export class Job extends Component {
       <div className="container my-3">
         <h2> News Monkey - Top Headlines </h2>
         <div className="row">
-          {/* {this.state.articles.map((e) => {
+          {this.state.articles.map((e) => {
             return (
               <div className="col-md-4" key={e.url}>
                 <JobItem
@@ -41,7 +41,7 @@ export class Job extends Component {
                 />
               </div>
             );
-          })} */}
+          })}
         </div>
       </div>
     );
